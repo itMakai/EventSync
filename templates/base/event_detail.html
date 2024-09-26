@@ -1,0 +1,78 @@
+
+     {% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4 mb-4">
+  <div class="event-header">
+    <div class="event-logo-section">
+      <img src="{{ event.image.url }}" alt="Event Image" class="circular-image">
+    </div>
+    <div class="event-info">
+      <h1 class="event-title">{{ event.title }}</h1>
+    </div>
+    <div class="event-info">
+      <p class="event-description">{{ event.description }}</p>
+    </div>
+    
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fas fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <div class="event-time-location">
+    <p>{{ event.date }}</p>
+    <p>{{event.start_time }} - {{ event.end_time }}</p>
+  </div>
+
+  <!-- <div class="key-themes">
+    <h2>Key Themes</h2>
+    <div class="themes-list">
+      {% for theme in event.key_themes.all %}
+        <span class="theme-tag">{{ theme.name }}</span>
+      {% endfor %}
+    </div>
+  </div> -->
+
+  <div class="event-details">
+    <h2>About this event</h2>
+    <p>{{ event.about }}</p>
+  </div>
+
+  <div class="event-extra-details">
+    <div class="when-where">
+      <div class="event-when">
+        <h3>When</h3>
+        <p>{{ event.date }}</p>
+        <p>{{event.start_time}} - {{ event.end_time }}</p>
+      </div>
+      <div class="event-where">
+        <h3>Where</h3>
+        <p>{{ event.location }}</p>
+        <a href="#" class="map-link">View larger map</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="tickets-section">
+    <a href="#" class="get-tickets-btn">Get Tickets</a>
+  </div>
+
+  <!-- Organizers Section -->
+  <div class="organizers-section">
+    <h2>Organizers</h2>
+    <div class="organizers-list">
+      {% for organizer in organizers %}
+        <div class="organizer">
+          <img src="{{ organizer.image.url }}" alt="{{ organizer.name }}" class="organizer-image">
+          <h3>{{ organizer.name }}</h3>
+          <p>{{ organizer.role }}</p>
+          <p>{{ organizer.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

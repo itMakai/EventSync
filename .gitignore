@@ -1,0 +1,47 @@
+# Django specific
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+.DS_Store
+
+# If using a PostgreSQL database, ignore database dumps
+*.sql
+
+# If using local environment settings, ignore them
+.env
+.env.*
+
+# Static files
+staticfiles/
+static/
+media/
+
+# Ignore compiled translations
+*.mo
+
+# Pytest
+.pytest_cache/
+
+# Django migrations
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Coverage reports
+htmlcov/
+.coverage
+*.cover
+.hypothesis/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
+
+
+# Virtual Environment
+venv/
+env/
+.venv/

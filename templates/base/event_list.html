@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+<div class="container mt-4 mb-4">
+  <div class="container hero-section">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="hero-text">
+          <h1>Your Event, Our Expertise</h1>
+          <p class="lead">Plan and execute memorable events with our professional event management services. From conferences to weddings, we ensure perfection in every detail.</p>
+          <!-- <a class="btn btn-secondary" href="{% url 'create_event' %}">Create Your Event</a> -->
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="hero-image">
+          <img src="{% static 'img/event.jpg' %}" alt="Event Image">
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="category-section">
+        {% for c in categories %}
+          <div class="round-card">
+            <a href="{% url 'category_detail' slug=c.slug %}">
+              <img src="{{ c.image.url }}" alt="Category">
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <h2>Events Happening Today</h2>
+          {% for event in today_events %}
+            <div class="col-md-3">
+              <div class="event-card">
+                <img src="{{ event.image.url }}" alt="Event Image">
+                <div class="event-card-body">
+                  <a href="{% url 'event_detail' slug=event.slug %}"><p class="event-title">{{ event.title }}</p></a>
+                  <p class="event-date">Event is happening today</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <h2>Upcoming Events</h2>
+          {% for event in upcoming_events %}
+            <div class="col-md-3">
+              <div class="event-card">
+                <img src="{{ event.image.url }}" alt="Event Image">
+                <div class="event-card-body">
+                  <a href="{% url 'event_detail' slug=event.slug %}"><p class="event-title">{{ event.title }}</p></a>
+                  <p class="event-date">{{ event.date }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <h2>Past Events</h2>
+          {% for event in past_events %}
+            <div class="col-md-4">
+              <div class="event-card">
+                <img src="{{ event.image.url }}" alt="Event Image">
+                <div class="event-card-body">
+                  <a href="{% url 'event_detail' slug=event.slug %}"><h5 class="event-title">{{ event.title }}</h5></a>
+                  <p class="event-date">{{ event.date }}</p>
+                  <p class="event-date">{{ event.organizer }}</p>
+                  <p class="event-description">{{ event.location }}</p>
+                  <p class="lead">Free</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}
